@@ -1,7 +1,8 @@
 import React from "react";
+import "./firebase/firebase";
 
 function App() {
-  return <div>{console.log(process.env.REACT_APP_GOOGLE_API)}</div>;
+  return <div>App</div>;
 }
 
 export default App;
