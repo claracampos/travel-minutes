@@ -1,8 +1,9 @@
 import React from "react";
+import login from "../actions/login";
 
 const LoginPage = () => (
   <div>
-    <button>Log In</button>
+    <button onClick={login}>Log In</button>
   </div>
 );
 
