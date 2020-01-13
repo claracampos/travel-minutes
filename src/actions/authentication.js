@@ -4,4 +4,8 @@ const login = () => {
   firebase.auth().signInWithPopup(googleAuthProvider);
 };
 
-export default login;
+const logout = () => {
+  firebase.auth().signOut();
+};
+
+export { login, logout };
