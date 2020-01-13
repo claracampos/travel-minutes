@@ -1,7 +1,5 @@
 import React from "react";
-import "./firebase/firebase";
-import Header from "./components/Header";
-import AddEntry from "./components/AddEntry";
+import { firebase } from "./firebase/firebase";
 import AppRouter from "./router/AppRouter";
 
 function App() {
@@ -13,3 +11,7 @@ function App() {
 }
 
 export default App;
+
+firebase.auth().onAuthStateChanged(user => {
+  user ? console.log("Logged in") : console.log("Not logged in");
+});
