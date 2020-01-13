@@ -1,5 +1,5 @@
 import React from "react";
-import login from "../actions/login";
+import { login } from "../actions/authentication";
 
 const LoginPage = () => (
   <div>
