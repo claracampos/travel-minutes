@@ -1,6 +1,7 @@
 import React, { useState, useContext, useEffect } from "react";
 import { database } from "../firebase/firebase";
 import AppContext from "../context/AppContext";
+import JournalEntry from "./JournalEntry";
 
 const DashboardPage = () => {
   const { user } = useContext(AppContext);
@@ -25,6 +26,11 @@ const DashboardPage = () => {
   return (
     <div>
       <h1>Dashboard</h1>
+      <h2>Entries:</h2>
+      {journalEntries &&
+        journalEntries.map(entry => (
+          <JournalEntry entry={entry} key={entry.id} />
+        ))}
     </div>
   );
 };
