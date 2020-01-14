@@ -1,22 +1,16 @@
-import React, { useState } from "react";
-import { firebase } from "./firebase/firebase";
+import React from "react";
 import AppRouter from "./router/AppRouter";
 import AppContext from "./context/AppContext";
 
-function App() {
-  const [user, setUser] = useState();
-
-  firebase.auth().onAuthStateChanged(user => {
-    user ? setUser(user.uid) : console.log("Not logged in");
-  });
-
+const App = props => {
+  console.log(props.user);
   return (
     <div>
-      <AppContext.Provider value={user}>
+      <AppContext.Provider value={{ user: props.user }}>
         <AppRouter />
       </AppContext.Provider>
     </div>
   );
-}
+};
 
 export default App;
