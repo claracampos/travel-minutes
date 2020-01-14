@@ -3,7 +3,7 @@ import handleEntryFormSubmit from "../actions/addEntryScripts";
 import TextInput from "./TextInput";
 import AppContext from "../context/AppContext";
 
-const AddEntry = () => {
+const AddEntryPage = () => {
   const user = useContext(AppContext);
   return (
     <div>
@@ -19,4 +19,4 @@ const AddEntry = () => {
   );
 };
 
-export default AddEntry;
+export default AddEntryPage;
