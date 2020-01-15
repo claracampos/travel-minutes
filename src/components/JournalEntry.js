@@ -1,40 +1,31 @@
 import React, { useState } from "react";
-import EditEntryForm from "./EditEntryForm";
+import { Link } from "react-router-dom";
 
 const JournalEntry = props => {
-  const entry = props.entry;
+  const { id, place, seen, done, met } = props.entry;
+  const [fullEntry, setFullEntry] = useState(false);
+  const buttonText = fullEntry ? "Hide" : "Show";
 
-  const [editability, setEditability] = useState(false);
-
-  if (!editability) {
-    return (
-      <div>
-        <h3>{entry.place}</h3>
+  return (
+    <div>
+      <h3>{place}</h3>
+      <button
+        onClick={() => {
+          setFullEntry(!fullEntry);
+        }}
+      >
+        {buttonText}
+      </button>
+      {fullEntry && (
         <div>
-          <p>What I saw: {entry.seen}</p>
-          <p>What I did: {entry.done}</p>
-          <p>People I met: {entry.met}</p>
-          <button
-            onClick={() => {
-              setEditability(true);
-            }}
-          >
-            Edit
-          </button>
+          <p>What I saw: {seen}</p>
+          <p>What I did: {done}</p>
+          <p>People I met: {met}</p>
+          <Link to={`/edit-entry/${id}`}>Edit</Link>
         </div>
-      </div>
-    );
-  }
-
-  if (editability) {
-    return (
-      <div>
-        <EditEntryForm entry={entry} />
-        <button onClick={() => setEditability(false)}>Cancel</button>
-        <button>Remove</button>
-      </div>
-    );
-  }
+      )}
+    </div>
+  );
 };
 
 export default JournalEntry;
