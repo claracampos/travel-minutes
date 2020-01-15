@@ -14,7 +14,7 @@ const addEntry = (e, user, callback) => {
   );
 };
 
-const editEntry = (e, user, id) => {
+const editEntry = (e, user, id, callback) => {
   e.preventDefault();
 
   database.ref(`users/${user}/${id}`).set(
@@ -24,7 +24,7 @@ const editEntry = (e, user, id) => {
       done: e.target.elements.done.value,
       met: e.target.elements.met.value
     },
-    error => (error ? alert(error) : window.location.reload(true))
+    error => (error ? alert(error) : callback)
   );
 };
 
