@@ -14,7 +14,7 @@ const EditEntryForm = props => {
       <form
         id="edit-entry-form"
         onSubmit={e => {
-          editEntry(e, user, id, history.push("/dashboard"));
+          editEntry(e, user, id, () => history.push("/dashboard"));
         }}
       >
         <TextInput name="place" defaultValue={place} />

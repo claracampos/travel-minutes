@@ -13,7 +13,7 @@ const AddEntryForm = () => {
       <form
         id="add-entry-form"
         onSubmit={e => {
-          addEntry(e, user, history.push("/dashboard"));
+          addEntry(e, user, () => history.push("/dashboard"));
         }}
       >
         <TextInput name="place" label="Place" />
