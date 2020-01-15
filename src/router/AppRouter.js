@@ -22,7 +22,9 @@ const AppRouter = () => {
           <Route path="/add-entry">
             <PrivateRoute component={<AddEntryPage />} />
           </Route>
-          <Route component={NotFoundPage} />
+          <Route>
+            <NotFoundPage />
+          </Route>
         </Switch>
       </div>
     </BrowserRouter>
