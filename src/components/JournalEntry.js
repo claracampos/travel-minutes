@@ -2,13 +2,15 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
 const JournalEntry = props => {
-  const { id, place, seen, done, met } = props.entry;
+  const { id, date, place, seen, done, met } = props.entry;
   const [fullEntry, setFullEntry] = useState(false);
   const buttonText = fullEntry ? "Hide" : "Show";
 
   return (
     <div>
-      <h3>{place}</h3>
+      <h3>
+        {date} - {place}
+      </h3>
       <button
         onClick={() => {
           setFullEntry(!fullEntry);
