@@ -17,10 +17,10 @@ const EditEntryForm = props => {
           editEntry(e, user, id, () => history.push("/dashboard"));
         }}
       >
-        <TextInput name="place" defaultValue={place} />
-        <TextInput name="seen" defaultValue={seen} />
-        <TextInput name="done" defaultValue={done} />
-        <TextInput name="met" defaultValue={met} />
+        <TextInput name="place" label="Place" defaultValue={place} />
+        <TextInput name="seen" label="What I saw" defaultValue={seen} />
+        <TextInput name="done" label="What I did" defaultValue={done} />
+        <TextInput name="met" label="People I met" defaultValue={met} />
         <button>Save</button>
       </form>
     </div>

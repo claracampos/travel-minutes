@@ -27,12 +27,13 @@ const EditEntryPage = () => {
   return (
     <div>
       <h1>Edit Entry</h1>
+      {entry && <h2>Date: {`${entry.date}`}</h2>}
       {entry && <EditEntryForm entry={entry} />}
-      <button>Cancel</button>
+      <button onClick={() => history.push("/dashboard")}>Cancel</button>
       <button
         onClick={() => deleteEntry(user, id, () => history.push("/dashboard"))}
       >
-        Remove
+        Delete Entry
       </button>
     </div>
   );
