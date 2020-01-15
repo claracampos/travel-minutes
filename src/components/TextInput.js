@@ -9,6 +9,7 @@ const TextInput = props => {
         name={props.name}
         defaultValue={props.defaultValue || ""}
         required
+        maxLength={props.maxLength || 3000}
       ></input>
     </div>
   );

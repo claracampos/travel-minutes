@@ -22,7 +22,7 @@ const AddEntryForm = () => {
         <label>Date: </label>
         <DatePicker selected={date} onChange={setDate} required />
 
-        <TextInput name="place" label="Place" />
+        <TextInput name="place" label="Place" maxLength={60} />
         <TextInput name="seen" label="What I saw" />
         <TextInput name="done" label="What I did" />
         <TextInput name="met" label="People I met" />
