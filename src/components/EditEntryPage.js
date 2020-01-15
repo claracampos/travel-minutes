@@ -3,6 +3,7 @@ import { useParams, useHistory } from "react-router-dom";
 import AppContext from "../context/AppContext";
 import { database } from "../firebase/firebase";
 import EditEntryForm from "./EditEntryForm";
+import { deleteEntry } from "../actions/entryActions";
 
 const EditEntryPage = () => {
   const { id } = useParams();
@@ -28,7 +29,11 @@ const EditEntryPage = () => {
       <h1>Edit Entry</h1>
       {entry && <EditEntryForm entry={entry} />}
       <button>Cancel</button>
-      <button>Remove</button>
+      <button
+        onClick={() => deleteEntry(user, id, () => history.push("/dashboard"))}
+      >
+        Remove
+      </button>
     </div>
   );
 };
