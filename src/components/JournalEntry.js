@@ -1,19 +1,40 @@
-import React from "react";
+import React, { useState } from "react";
+import EditEntryForm from "./EditEntryForm";
 
 const JournalEntry = props => {
-  const { place, seen, done, people } = props.entry;
+  const entry = props.entry;
 
-  return (
-    <div>
-      <h3>{place}</h3>
+  const [editability, setEditability] = useState(false);
+
+  if (!editability) {
+    return (
       <div>
-        <p>What I saw: {seen}</p>
-        <p>What I did: {done}</p>
-        <p>People I met: {people}</p>
-        <a href="/edit">Edit</a>
+        <h3>{entry.place}</h3>
+        <div>
+          <p>What I saw: {entry.seen}</p>
+          <p>What I did: {entry.done}</p>
+          <p>People I met: {entry.met}</p>
+          <button
+            onClick={() => {
+              setEditability(true);
+            }}
+          >
+            Edit
+          </button>
+        </div>
       </div>
-    </div>
-  );
+    );
+  }
+
+  if (editability) {
+    return (
+      <div>
+        <EditEntryForm entry={entry} />
+        <button onClick={() => setEditability(false)}>Cancel</button>
+        <button>Remove</button>
+      </div>
+    );
+  }
 };
 
 export default JournalEntry;
