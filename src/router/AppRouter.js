@@ -18,16 +18,16 @@ const AppRouter = () => {
           <Route exact path="/">
             <LandingRoute />
           </Route>
-          <Route path="/dashboard">
+          <Route exact path="/dashboard">
             <PrivateRoute component={<DashboardPage />} />
           </Route>
-          <Route path="/add-entry">
+          <Route exact path="/add-entry">
             <PrivateRoute component={<AddEntryPage />} />
           </Route>
           <Route path="/edit-entry/:id">
             <PrivateRoute component={<EditEntryPage />} />
           </Route>
-          <Route path="/error">
+          <Route exact path="/error">
             <ErrorPage />
           </Route>
           <Route>
