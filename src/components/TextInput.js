@@ -10,6 +10,7 @@ const TextInput = props => {
         defaultValue={props.defaultValue || ""}
         required
         maxLength={props.maxLength || 3000}
+        autoComplete="off"
       ></input>
     </div>
   );
