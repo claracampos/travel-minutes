@@ -3,6 +3,7 @@ import Header from "../components/Header";
 import AddEntryPage from "../components/AddEntryPage";
 import EditEntryPage from "../components/EditEntryPage";
 import ErrorPage from "../components/ErrorPage";
+import AboutPage from "../components/AboutPage";
 import NotFoundPage from "../components/NotFoundPage";
 import DashboardPage from "../components/DashboardPage";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
@@ -26,6 +27,9 @@ const AppRouter = () => {
           </Route>
           <Route path="/edit-entry/:id">
             <PrivateRoute component={<EditEntryPage />} />
+          </Route>
+          <Route exact path="/about">
+            <AboutPage />
           </Route>
           <Route exact path="/error">
             <ErrorPage />
