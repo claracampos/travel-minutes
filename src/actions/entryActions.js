@@ -3,8 +3,9 @@ import { database } from "../firebase/firebase";
 const addEntry = (e, user, date, callback) => {
   e.preventDefault();
   const formattedDate = date.toLocaleDateString();
+  const dateKey = `${date.valueOf()}-${Date.now().valueOf()}`;
 
-  database.ref(`users/${user}`).push(
+  database.ref(`users/${user}/${dateKey}`).set(
     {
       date: formattedDate,
       place: e.target.elements.place.value,
