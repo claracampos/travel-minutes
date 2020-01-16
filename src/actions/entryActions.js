@@ -23,7 +23,6 @@ const editEntry = (e, user, id, callback) => {
 
   database.ref(`users/${user}/${id}`).update(
     {
-      place: e.target.elements.place.value,
       seen: e.target.elements.seen.value,
       done: e.target.elements.done.value,
       met: e.target.elements.met.value
