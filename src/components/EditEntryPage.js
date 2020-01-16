@@ -4,6 +4,7 @@ import AppContext from "../context/AppContext";
 import { database } from "../firebase/firebase";
 import EditEntryForm from "./EditEntryForm";
 import { deleteEntry } from "../actions/entryActions";
+import GoHomeButton from "./GoHomeButton";
 
 const EditEntryPage = () => {
   const { id } = useParams();
@@ -30,7 +31,7 @@ const EditEntryPage = () => {
       {!entry && <h1>Loading...</h1>}
       {entry && <h2>Date: {`${entry.date}`}</h2>}
       {entry && <EditEntryForm entry={entry} />}
-      <button onClick={() => history.push("/dashboard")}>Cancel</button>
+      <GoHomeButton>Cancel</GoHomeButton>
       <button
         onClick={() => deleteEntry(user, id, () => history.push("/dashboard"))}
       >
