@@ -46,17 +46,17 @@ const deleteEntry = (user, id, callback) => {
 
 const searchEntries = (e, entries, setSearchResults) => {
   e.preventDefault();
-  const searchTerm = e.target.value;
+  const searchTerm = e.target.value.toLowerCase();
   if (!searchTerm) {
     setSearchResults(false);
   } else {
     const searchResults = entries.filter(
       element =>
-        element.date.includes(searchTerm) ||
-        element.place.includes(searchTerm) ||
-        element.seen.includes(searchTerm) ||
-        element.done.includes(searchTerm) ||
-        element.met.includes(searchTerm)
+        element.date.toLowerCase().includes(searchTerm) ||
+        element.place.toLowerCase().includes(searchTerm) ||
+        element.seen.toLowerCase().includes(searchTerm) ||
+        element.done.toLowerCase().includes(searchTerm) ||
+        element.met.toLowerCase().includes(searchTerm)
     );
 
     setSearchResults(searchResults);
