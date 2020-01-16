@@ -29,7 +29,7 @@ const EditEntryPage = () => {
     <div>
       <h1>Edit Entry</h1>
       {!entry && <h1>Loading...</h1>}
-      {entry && <h2>Date: {`${entry.date}`}</h2>}
+      {entry && <h2>{`${entry.date} - ${entry.place}`}</h2>}
       {entry && <EditEntryForm entry={entry} />}
       <GoHomeButton>Cancel</GoHomeButton>
       <button
