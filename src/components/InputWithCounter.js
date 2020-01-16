@@ -1,6 +1,7 @@
 import React from "react";
+import CharacterCount from "./CharacterCount";
 
-const TextInput = props => {
+const InputWithCounter = props => {
   return (
     <div>
       {props.label && <label>{props.label}: </label>}
@@ -9,11 +10,13 @@ const TextInput = props => {
         name={props.name}
         defaultValue={props.defaultValue || ""}
         required
-        maxLength={props.maxLength || 3000}
+        maxLength={100}
         autoComplete="off"
+        onChange={e => props.setCount(e.target.value.length)}
       ></input>
+      <CharacterCount count={props.count} />
     </div>
   );
 };
 
-export default TextInput;
+export default InputWithCounter;
