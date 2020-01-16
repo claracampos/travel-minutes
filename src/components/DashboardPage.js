@@ -3,12 +3,15 @@ import { database } from "../firebase/firebase";
 import AppContext from "../context/AppContext";
 import JournalEntries from "./JournalEntries";
 import SearchView from "./SearchView";
+import PaginationFooter from "./PaginationFooter";
 
 const DashboardPage = () => {
   const { user } = useContext(AppContext);
   const [journalEntries, setJournalEntries] = useState();
   const [sortByOldest, setSortByOldest] = useState(false);
   const [searchView, setSearchView] = useState();
+  const [pagination, setPagination] = useState({ start: 0, end: 2 });
+  const [entriesOnPage, setEntriesOnPage] = useState();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -18,13 +21,16 @@ const DashboardPage = () => {
       data.forEach(entry => {
         entries.push({ id: entry.key, ...entry.val() });
       });
-      sortByOldest
-        ? setJournalEntries(entries.reverse())
-        : setJournalEntries(entries);
+
+      if (sortByOldest) {
+        entries.reverse();
+      }
+      setJournalEntries(entries);
+      setEntriesOnPage(entries.slice(pagination.start, pagination.end));
     };
 
     fetchData();
-  }, [user, sortByOldest]);
+  }, [user, sortByOldest, pagination]);
 
   if (!searchView) {
     return (
@@ -37,7 +43,14 @@ const DashboardPage = () => {
         </select>
         <button onClick={() => setSearchView(true)}>Search</button>
         {!journalEntries && <h1>Loading...</h1>}
-        {journalEntries && <JournalEntries entries={journalEntries} />}
+        {entriesOnPage && <JournalEntries entries={entriesOnPage} />}
+        {entriesOnPage && (
+          <PaginationFooter
+            pagination={pagination}
+            setPagination={setPagination}
+            entriesLength={entriesOnPage.length}
+          />
+        )}
       </div>
     );
   } else {
