@@ -3,7 +3,12 @@ import { database } from "../firebase/firebase";
 const addEntry = (e, user, date, callback) => {
   e.preventDefault();
   const formattedDate = date.toLocaleDateString();
-  const dateKey = `${date.valueOf()}-${Date.now().valueOf()}`;
+  const dateString = date
+    .toISOString()
+    .slice(0, 10)
+    .split("-")
+    .join("");
+  const dateKey = `${30000000 - parseInt(dateString)}-${Date.now().valueOf()}`;
 
   database.ref(`users/${user}/${dateKey}`).set(
     {
