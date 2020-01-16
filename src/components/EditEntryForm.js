@@ -1,13 +1,16 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import AppContext from "../context/AppContext";
-import TextInput from "./TextInput";
+import InputWithCounter from "./InputWithCounter";
 import { editEntry } from "../actions/entryActions";
 import { useHistory } from "react-router-dom";
 
 const EditEntryForm = props => {
   const { user } = useContext(AppContext);
-  const { place, seen, done, met, id } = props.entry;
+  const { seen, done, met, id } = props.entry;
   const history = useHistory();
+  const [seenCount, setSeenCount] = useState(seen.length);
+  const [doneCount, setDoneCount] = useState(done.length);
+  const [metCount, setMetCount] = useState(met.length);
 
   return (
     <div>
@@ -17,15 +20,27 @@ const EditEntryForm = props => {
           editEntry(e, user, id, () => history.push("/dashboard"));
         }}
       >
-        <TextInput
-          name="place"
-          label="Place"
-          defaultValue={place}
-          maxLength={60}
+        <InputWithCounter
+          name="seen"
+          label="What I saw"
+          defaultValue={seen}
+          setCount={setSeenCount}
+          count={seenCount}
         />
-        <TextInput name="seen" label="What I saw" defaultValue={seen} />
-        <TextInput name="done" label="What I did" defaultValue={done} />
-        <TextInput name="met" label="People I met" defaultValue={met} />
+        <InputWithCounter
+          name="done"
+          label="What I did"
+          defaultValue={done}
+          setCount={setDoneCount}
+          count={doneCount}
+        />
+        <InputWithCounter
+          name="met"
+          label="People I met"
+          defaultValue={met}
+          setCount={setMetCount}
+          count={metCount}
+        />
         <button>Save</button>
       </form>
     </div>
