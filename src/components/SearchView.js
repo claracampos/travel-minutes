@@ -4,7 +4,7 @@ import SearchResults from "./SearchResults";
 
 const SearchView = props => {
   const entries = props.entries;
-  const setSearch = props.action;
+  const setSearchView = props.action;
   const [searchResults, setSearchResults] = useState();
 
   return (
@@ -14,7 +14,7 @@ const SearchView = props => {
       <button
         onClick={() => {
           setSearchResults();
-          setSearch(false);
+          setSearchView(false);
         }}
       >
         Go back

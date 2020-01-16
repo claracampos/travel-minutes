@@ -8,7 +8,7 @@ const DashboardPage = () => {
   const { user } = useContext(AppContext);
   const [journalEntries, setJournalEntries] = useState();
   const [sortByOldest, setSortByOldest] = useState(false);
-  const [search, setSearch] = useState();
+  const [searchView, setSearchView] = useState();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -26,7 +26,7 @@ const DashboardPage = () => {
     fetchData();
   }, [user, sortByOldest]);
 
-  if (!search) {
+  if (!searchView) {
     return (
       <div>
         <h1>Dashboard</h1>
@@ -35,13 +35,13 @@ const DashboardPage = () => {
           <option value="sort-desc">Most recent first</option>
           <option value="sort-asc">Oldest first</option>
         </select>
-        <button onClick={() => setSearch(true)}>Search</button>
+        <button onClick={() => setSearchView(true)}>Search</button>
         {!journalEntries && <h1>Loading...</h1>}
         {journalEntries && <JournalEntries entries={journalEntries} />}
       </div>
     );
   } else {
-    return <SearchView entries={journalEntries} action={setSearch} />;
+    return <SearchView entries={journalEntries} action={setSearchView} />;
   }
 };
 
