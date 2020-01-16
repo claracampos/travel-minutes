@@ -3,7 +3,7 @@ import React from "react";
 const PaginationFooter = props => {
   const { pagination, setPagination, entriesLength } = props;
 
-  if (entriesLength < 2) {
+  if (entriesLength < 10) {
     return (
       <div>
         <p>End of journal.</p>
@@ -11,8 +11,8 @@ const PaginationFooter = props => {
           <button
             onClick={() =>
               setPagination({
-                start: pagination.start - 2,
-                end: pagination.end - 2
+                end: pagination.start,
+                start: pagination.start - 10
               })
             }
           >
@@ -29,8 +29,8 @@ const PaginationFooter = props => {
         <button
           onClick={() =>
             setPagination({
-              start: pagination.start - 2,
-              end: pagination.end - 2
+              end: pagination.start,
+              start: pagination.start - 10
             })
           }
         >
@@ -40,8 +40,8 @@ const PaginationFooter = props => {
       <button
         onClick={() =>
           setPagination({
-            start: pagination.start + 2,
-            end: pagination.end + 2
+            start: pagination.end,
+            end: pagination.end + 10
           })
         }
       >

@@ -10,7 +10,7 @@ const DashboardPage = () => {
   const [journalEntries, setJournalEntries] = useState();
   const [sortByOldest, setSortByOldest] = useState(false);
   const [searchView, setSearchView] = useState();
-  const [pagination, setPagination] = useState({ start: 0, end: 2 });
+  const [pagination, setPagination] = useState({ start: 0, end: 10 });
   const [entriesOnPage, setEntriesOnPage] = useState();
 
   useEffect(() => {
