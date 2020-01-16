@@ -2,11 +2,13 @@ import React, { useState, useContext, useEffect } from "react";
 import { database } from "../firebase/firebase";
 import AppContext from "../context/AppContext";
 import JournalEntries from "./JournalEntries";
+import SearchView from "./SearchView";
 
 const DashboardPage = () => {
   const { user } = useContext(AppContext);
   const [journalEntries, setJournalEntries] = useState();
   const [sortByOldest, setSortByOldest] = useState(false);
+  const [search, setSearch] = useState();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -24,19 +26,22 @@ const DashboardPage = () => {
     fetchData();
   }, [user, sortByOldest]);
 
-  console.log(journalEntries);
-
-  return (
-    <div>
-      <h1>Dashboard</h1>
-      <label>Show: </label>
-      <select onChange={() => setSortByOldest(!sortByOldest)}>
-        <option value="sort-desc">Most recent first</option>
-        <option value="sort-asc">Oldest first</option>
-      </select>
-      {journalEntries && <JournalEntries entries={journalEntries} />}
-    </div>
-  );
+  if (!search) {
+    return (
+      <div>
+        <h1>Dashboard</h1>
+        <label>Show: </label>
+        <select onChange={() => setSortByOldest(!sortByOldest)}>
+          <option value="sort-desc">Most recent first</option>
+          <option value="sort-asc">Oldest first</option>
+        </select>
+        <button onClick={() => setSearch(true)}>Search</button>
+        {journalEntries && <JournalEntries entries={journalEntries} />}
+      </div>
+    );
+  } else {
+    return <SearchView entries={journalEntries} action={setSearch} />;
+  }
 };
 
 export default DashboardPage;
