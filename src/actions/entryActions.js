@@ -44,4 +44,21 @@ const deleteEntry = (user, id, callback) => {
   }
 };
 
-export { addEntry, editEntry, deleteEntry };
+const searchEntries = (e, entries, setSearchResults) => {
+  e.preventDefault();
+  const searchTerm = e.target.value;
+  if (!searchTerm) {
+    setSearchResults(false);
+  } else {
+    const searchResults = entries.filter(
+      element =>
+        element.place.indexOf(searchTerm) !== -1 ||
+        element.seen.indexOf(searchTerm) !== -1 ||
+        element.done.indexOf(searchTerm) !== -1 ||
+        element.met.indexOf(searchTerm) !== -1
+    );
+    setSearchResults(searchResults);
+  }
+};
+
+export { addEntry, editEntry, deleteEntry, searchEntries };
