@@ -36,6 +36,7 @@ const DashboardPage = () => {
           <option value="sort-asc">Oldest first</option>
         </select>
         <button onClick={() => setSearch(true)}>Search</button>
+        {!journalEntries && <h1>Loading...</h1>}
         {journalEntries && <JournalEntries entries={journalEntries} />}
       </div>
     );

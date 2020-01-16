@@ -27,6 +27,7 @@ const EditEntryPage = () => {
   return (
     <div>
       <h1>Edit Entry</h1>
+      {!entry && <h1>Loading...</h1>}
       {entry && <h2>Date: {`${entry.date}`}</h2>}
       {entry && <EditEntryForm entry={entry} />}
       <button onClick={() => history.push("/dashboard")}>Cancel</button>
