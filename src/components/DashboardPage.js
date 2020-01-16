@@ -1,11 +1,12 @@
 import React, { useState, useContext, useEffect } from "react";
 import { database } from "../firebase/firebase";
 import AppContext from "../context/AppContext";
-import JournalEntry from "./JournalEntry";
+import JournalEntries from "./JournalEntries";
 
 const DashboardPage = () => {
   const { user } = useContext(AppContext);
   const [journalEntries, setJournalEntries] = useState();
+  const [sortByOldest, setSortByOldest] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -15,22 +16,25 @@ const DashboardPage = () => {
       data.forEach(entry => {
         entries.push({ id: entry.key, ...entry.val() });
       });
-      setJournalEntries(entries);
+      sortByOldest
+        ? setJournalEntries(entries.reverse())
+        : setJournalEntries(entries);
     };
 
     fetchData();
-  }, [user]);
+  }, [user, sortByOldest]);
 
   console.log(journalEntries);
 
   return (
     <div>
       <h1>Dashboard</h1>
-      <h2>Entries:</h2>
-      {journalEntries &&
-        journalEntries.map(entry => (
-          <JournalEntry entry={entry} key={entry.id} />
-        ))}
+      <label>Show: </label>
+      <select onChange={() => setSortByOldest(!sortByOldest)}>
+        <option value="sort-desc">Most recent first</option>
+        <option value="sort-asc">Oldest first</option>
+      </select>
+      {journalEntries && <JournalEntries entries={journalEntries} />}
     </div>
   );
 };
