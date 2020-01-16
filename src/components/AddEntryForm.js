@@ -1,6 +1,6 @@
 import React, { useContext, useState } from "react";
 import AppContext from "../context/AppContext";
-import TextInput from "./TextInput";
+import InputWithCounter from "./InputWithCounter";
 import { addEntry } from "../actions/entryActions";
 import { useHistory } from "react-router-dom";
 import DatePicker from "react-datepicker";
@@ -10,7 +10,9 @@ const AddEntryForm = () => {
   const { user } = useContext(AppContext);
   const history = useHistory();
   const [date, setDate] = useState();
-
+  const [seenCount, setSeenCount] = useState(0);
+  const [doneCount, setDoneCount] = useState(0);
+  const [metCount, setMetCount] = useState(0);
   return (
     <div>
       <form
@@ -22,10 +24,27 @@ const AddEntryForm = () => {
         <label>Date: </label>
         <DatePicker selected={date} onChange={setDate} required />
 
-        <TextInput name="place" label="Place" maxLength={60} />
-        <TextInput name="seen" label="What I saw" />
-        <TextInput name="done" label="What I did" />
-        <TextInput name="met" label="People I met" />
+        <label>Place: </label>
+        <input name="place" maxLength={50} required autoComplete="off" />
+        <InputWithCounter
+          name="seen"
+          label="What I saw"
+          setCount={setSeenCount}
+          count={seenCount}
+        />
+
+        <InputWithCounter
+          name="done"
+          label="What I did"
+          setCount={setDoneCount}
+          count={doneCount}
+        />
+        <InputWithCounter
+          name="met"
+          label="People I met"
+          setCount={setMetCount}
+          count={metCount}
+        />
         <button>Add Entry</button>
       </form>
     </div>
