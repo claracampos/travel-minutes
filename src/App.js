@@ -3,7 +3,6 @@ import AppRouter from "./router/AppRouter";
 import AppContext from "./context/AppContext";
 
 const App = props => {
-  console.log(props.user);
   return (
     <div>
       <AppContext.Provider value={{ user: props.user }}>
