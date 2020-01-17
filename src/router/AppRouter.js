@@ -2,7 +2,6 @@ import React from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import PrivateRoute from "./PrivateRoute";
 import LandingRoute from "./LandingRoute";
-import Header from "../components/Header";
 import AddEntryPage from "../pages/AddEntryPage";
 import EditEntryPage from "../pages/EditEntryPage";
 import ErrorPage from "../pages/ErrorPage";
@@ -14,7 +13,6 @@ const AppRouter = () => {
   return (
     <BrowserRouter>
       <div>
-        <Header />
         <Switch>
           <Route exact path="/">
             <LandingRoute />
