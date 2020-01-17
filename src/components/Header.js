@@ -1,5 +1,5 @@
 import React from "react";
-import { logout } from "../actions/authentication";
+import { logout } from "../utils/authentication";
 import { Link } from "react-router-dom";
 
 export const Header = () => {

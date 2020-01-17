@@ -1,6 +1,6 @@
 import React from "react";
-import AddEntryForm from "./AddEntryForm";
-import GoHomeButton from "./GoHomeButton";
+import AddEntryForm from "../components/forms/AddEntryForm";
+import GoHomeButton from "../components/GoHomeButton";
 
 const AddEntryPage = () => {
   return (

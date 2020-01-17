@@ -1,5 +1,5 @@
 import React from "react";
-import GoHomeButton from "./GoHomeButton";
+import GoHomeButton from "../components/GoHomeButton";
 
 const NotFoundPage = () => (
   <div>

@@ -2,9 +2,9 @@ import React, { useContext, useEffect, useState } from "react";
 import { useParams, useHistory } from "react-router-dom";
 import AppContext from "../context/AppContext";
 import { database } from "../firebase/firebase";
-import EditEntryForm from "./EditEntryForm";
-import { deleteEntry } from "../actions/entryActions";
-import GoHomeButton from "./GoHomeButton";
+import EditEntryForm from "../components/forms/EditEntryForm";
+import { deleteEntry } from "../utils/entryUtils";
+import GoHomeButton from "../components/GoHomeButton";
 
 const EditEntryPage = () => {
   const { id } = useParams();
@@ -14,7 +14,9 @@ const EditEntryPage = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const data = await database.ref(`users/${user}/${id}`).once("value");
+      const data = await database
+        .ref(`users/${user}/entries/${id}`)
+        .once("value");
       if (data.exists()) {
         setEntry({ id: id, ...data.val() });
       } else {

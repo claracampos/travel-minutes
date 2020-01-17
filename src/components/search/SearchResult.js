@@ -8,7 +8,7 @@ const SearchResult = props => {
       <p>
         <b>
           {date} - {place}
-        </b>{" "}
+        </b>
         <Link to={`/edit-entry/${id}`}>Edit</Link>
       </p>
       <p>What I saw: {seen}</p>

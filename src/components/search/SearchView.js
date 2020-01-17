@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { searchEntries } from "../actions/entryActions";
-import SearchResults from "./SearchResults";
+import { searchEntries } from "../../utils/entryUtils";
+import SearchResultsList from "./SearchResultsList";
 
 const SearchView = props => {
   const entries = props.entries;
@@ -13,7 +13,6 @@ const SearchView = props => {
       <h2>Search</h2>
       <button
         onClick={() => {
-          setSearchResults();
           setSearchView(false);
         }}
       >
@@ -26,7 +25,7 @@ const SearchView = props => {
           searchEntries(e, entries, setSearchResults);
         }}
       ></input>
-      {searchResults && <SearchResults results={searchResults} />}
+      {searchResults && <SearchResultsList results={searchResults} />}
       {!searchResults && <p>Enter your search term above.</p>}
     </div>
   );

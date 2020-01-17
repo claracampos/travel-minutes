@@ -1,11 +1,11 @@
 import React from "react";
 import Header from "../components/Header";
-import AddEntryPage from "../components/AddEntryPage";
-import EditEntryPage from "../components/EditEntryPage";
-import ErrorPage from "../components/ErrorPage";
-import AboutPage from "../components/AboutPage";
-import NotFoundPage from "../components/NotFoundPage";
-import DashboardPage from "../components/DashboardPage";
+import AddEntryPage from "../pages/AddEntryPage";
+import EditEntryPage from "../pages/EditEntryPage";
+import ErrorPage from "../pages/ErrorPage";
+import AboutPage from "../pages/AboutPage";
+import NotFoundPage from "../pages/NotFoundPage";
+import DashboardPage from "../pages/DashboardPage";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import PrivateRoute from "./PrivateRoute";
 import LandingRoute from "./LandingRoute";
