@@ -1,10 +1,10 @@
 import React, { useContext, useEffect, useState } from "react";
 import { useParams, useHistory } from "react-router-dom";
-import AppContext from "../context/AppContext";
 import { database } from "../firebase/firebase";
+import AppContext from "../context/AppContext";
 import EditEntryForm from "../components/forms/EditEntryForm";
-import { deleteEntry } from "../utils/entryUtils";
 import GoHomeButton from "../components/GoHomeButton";
+import { deleteEntry } from "../utils/entryUtils";
 
 const EditEntryPage = () => {
   const { id } = useParams();
@@ -17,16 +17,14 @@ const EditEntryPage = () => {
       const data = await database
         .ref(`users/${user}/entries/${id}`)
         .once("value");
-      if (data.exists()) {
-        setEntry({ id: id, ...data.val() });
-      } else {
-        history.replace("/error");
-      }
+
+      data.exists()
+        ? setEntry({ id: id, ...data.val() })
+        : history.replace("/error");
     };
     fetchData();
   }, [id, user, history]);
 
-  console.log(entry);
   return (
     <div>
       <h1>Edit Entry</h1>
