@@ -1,4 +1,7 @@
 import React from "react";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
+import PrivateRoute from "./PrivateRoute";
+import LandingRoute from "./LandingRoute";
 import Header from "../components/Header";
 import AddEntryPage from "../pages/AddEntryPage";
 import EditEntryPage from "../pages/EditEntryPage";
@@ -6,9 +9,6 @@ import ErrorPage from "../pages/ErrorPage";
 import AboutPage from "../pages/AboutPage";
 import NotFoundPage from "../pages/NotFoundPage";
 import DashboardPage from "../pages/DashboardPage";
-import { BrowserRouter, Route, Switch } from "react-router-dom";
-import PrivateRoute from "./PrivateRoute";
-import LandingRoute from "./LandingRoute";
 
 const AppRouter = () => {
   return (
@@ -20,13 +20,19 @@ const AppRouter = () => {
             <LandingRoute />
           </Route>
           <Route exact path="/dashboard">
-            <PrivateRoute component={<DashboardPage />} />
+            <PrivateRoute>
+              <DashboardPage />
+            </PrivateRoute>
           </Route>
           <Route exact path="/add-entry">
-            <PrivateRoute component={<AddEntryPage />} />
+            <PrivateRoute>
+              <AddEntryPage />
+            </PrivateRoute>
           </Route>
           <Route path="/edit-entry/:id">
-            <PrivateRoute component={<EditEntryPage />} />
+            <PrivateRoute>
+              <EditEntryPage />
+            </PrivateRoute>
           </Route>
           <Route exact path="/about">
             <AboutPage />
