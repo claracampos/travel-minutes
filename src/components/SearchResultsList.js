@@ -1,7 +1,7 @@
 import React from "react";
 import SearchResult from "./SearchResult";
 
-const SearchResults = props => {
+const SearchResultsList = props => {
   const results = props.results;
 
   return results.length === 0 ? (
@@ -11,4 +11,4 @@ const SearchResults = props => {
   );
 };
 
-export default SearchResults;
+export default SearchResultsList;

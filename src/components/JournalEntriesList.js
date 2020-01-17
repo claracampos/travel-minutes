@@ -1,7 +1,7 @@
 import React from "react";
 import JournalEntry from "./JournalEntry";
 
-const JournalEntries = props => {
+const JournalEntriesList = props => {
   const entries = props.entries;
 
   return (
@@ -13,4 +13,4 @@ const JournalEntries = props => {
   );
 };
 
-export default JournalEntries;
+export default JournalEntriesList;
