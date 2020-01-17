@@ -1,12 +1,12 @@
 import { database } from "../firebase/firebase";
+import generateId from "./generateId";
 
 const addEntry = (e, user, date, callback) => {
   e.preventDefault();
   const formattedDate = date.toLocaleDateString();
+  const id = generateId(date);
 
-  const dateKey = `${32503680000000 - date.valueOf()}-${Date.now().valueOf()}`;
-
-  database.ref(`users/${user}/${dateKey}`).set(
+  database.ref(`users/${user}/entries/${id}`).set(
     {
       date: formattedDate,
       place: e.target.elements.place.value,
@@ -21,7 +21,7 @@ const addEntry = (e, user, date, callback) => {
 const editEntry = (e, user, id, callback) => {
   e.preventDefault();
 
-  database.ref(`users/${user}/${id}`).update(
+  database.ref(`users/${user}/entries/${id}`).update(
     {
       seen: e.target.elements.seen.value,
       done: e.target.elements.done.value,
@@ -38,7 +38,7 @@ const deleteEntry = (user, id, callback) => {
 
   if (confirmation) {
     database
-      .ref(`users/${user}/${id}`)
+      .ref(`users/${user}/entries/${id}`)
       .remove(error => (error ? alert(error) : callback()));
   }
 };
@@ -47,19 +47,18 @@ const searchEntries = (e, entries, setSearchResults) => {
   e.preventDefault();
   const searchTerm = e.target.value.toLowerCase();
   if (!searchTerm) {
-    setSearchResults(false);
-  } else {
-    const searchResults = entries.filter(
-      element =>
-        element.date.toLowerCase().includes(searchTerm) ||
-        element.place.toLowerCase().includes(searchTerm) ||
-        element.seen.toLowerCase().includes(searchTerm) ||
-        element.done.toLowerCase().includes(searchTerm) ||
-        element.met.toLowerCase().includes(searchTerm)
-    );
-
-    setSearchResults(searchResults);
+    return setSearchResults(false);
   }
+
+  const searchResults = entries.filter(entry =>
+    Object.values(entry)
+      .slice(1)
+      .toString()
+      .toLowerCase()
+      .includes(searchTerm)
+  );
+
+  setSearchResults(searchResults);
 };
 
 export { addEntry, editEntry, deleteEntry, searchEntries };
