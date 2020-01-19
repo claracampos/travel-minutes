@@ -3,6 +3,8 @@ import { database } from "../firebase/firebase";
 import AppContext from "../context/AppContext";
 import JournalEntriesList from "../components/entries/JournalEntriesList";
 import SearchView from "../components/search/SearchView";
+import PrivateNavBar from "../components/PrivateNavBar";
+import LoadingSpinner from "../components/LoadingSpinner";
 
 const DashboardPage = () => {
   const { user } = useContext(AppContext);
@@ -41,28 +43,42 @@ const DashboardPage = () => {
 
   return (
     <div>
-      <h1>Dashboard</h1>
-      <div>
-        <label>Show: </label>
-        <select onChange={() => setSortByNewest(!sortByNewest)}>
-          <option defaultValue="newest">Most recent first</option>
-          <option value="oldest">Oldest first</option>
-        </select>
-      </div>
-      <div>
-        <button onClick={() => setSearchView(true)}>Search</button>
-      </div>
-      <div>
-        {!journalEntries && <h1>Loading...</h1>}
-        {entriesOnPage && <JournalEntriesList entries={entriesOnPage} />}
-      </div>
-      <div>
-        {entriesOnPage &&
-          journalEntries.length - entriesOnPage.length !== 0 && (
-            <button onClick={() => setPageLength(pageLength + 10)}>
-              See More
+      <PrivateNavBar />
+      <div class="m-3">
+        <h1 class="serif text-left pb-3">My Travel Log</h1>
+        <div class="container-fluid d-flex flex-row justify-content-start px-0 mb-4">
+          <div>
+            <button
+              onClick={() => setSearchView(true)}
+              class="btn btn-light border rounded-pill shadow-sm px-4 mr-2"
+            >
+              Search
+            </button>
+          </div>
+          <div>
+            <select
+              onChange={() => setSortByNewest(!sortByNewest)}
+              class="form-control bg-light border rounded-pill shadow-sm"
+            >
+              <option defaultValue="newest">View newest first</option>
+              <option value="oldest">View oldest first</option>
+            </select>
+          </div>
+        </div>
+        <div>
+          {!journalEntries && <LoadingSpinner />}
+          {entriesOnPage && <JournalEntriesList entries={entriesOnPage} />}
+        </div>
+        <div class="d-flex flex-row justify-content-center">
+          {entriesOnPage && journalEntries.length - entriesOnPage.length !== 0 && (
+            <button
+              onClick={() => setPageLength(pageLength + 10)}
+              class="btn btn-lg btn-light border shadow-sm w-100 serif"
+            >
+              Load more
             </button>
           )}
+        </div>
       </div>
     </div>
   );
