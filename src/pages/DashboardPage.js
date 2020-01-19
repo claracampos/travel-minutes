@@ -5,6 +5,7 @@ import JournalEntriesList from "../components/entries/JournalEntriesList";
 import SearchView from "../components/search/SearchView";
 import PrivateNavBar from "../components/PrivateNavBar";
 import LoadingSpinner from "../components/LoadingSpinner";
+import { Link } from "react-router-dom";
 
 const DashboardPage = () => {
   const { user } = useContext(AppContext);
@@ -48,9 +49,17 @@ const DashboardPage = () => {
         <h1 class="serif text-left pb-3">My Travel Log</h1>
         <div class="container-fluid d-flex flex-row justify-content-start px-0 mb-4">
           <div>
+            <Link
+              to="/add-entry"
+              class="btn btn-primary border rounded-circle shadow-sm mr-2 add-button"
+            >
+              +
+            </Link>
+          </div>
+          <div>
             <button
               onClick={() => setSearchView(true)}
-              class="btn btn-light border rounded-pill shadow-sm px-4 mr-2"
+              class="btn btn-light border border-secondary rounded-pill shadow-sm mr-2"
             >
               Search
             </button>
@@ -58,7 +67,7 @@ const DashboardPage = () => {
           <div>
             <select
               onChange={() => setSortByNewest(!sortByNewest)}
-              class="form-control bg-light border rounded-pill shadow-sm"
+              class="form-control bg-light border border-secondary rounded-pill shadow-sm"
             >
               <option defaultValue="newest">View newest first</option>
               <option value="oldest">View oldest first</option>
