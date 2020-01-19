@@ -8,6 +8,7 @@ import ErrorPage from "../pages/ErrorPage";
 import AboutPage from "../pages/AboutPage";
 import NotFoundPage from "../pages/NotFoundPage";
 import DashboardPage from "../pages/DashboardPage";
+import HelpPage from "../pages/HelpPage";
 
 const AppRouter = () => {
   return (
@@ -34,6 +35,9 @@ const AppRouter = () => {
           </Route>
           <Route exact path="/about">
             <AboutPage />
+          </Route>
+          <Route exact path="/help">
+            <HelpPage />
           </Route>
           <Route exact path="/error">
             <ErrorPage />
