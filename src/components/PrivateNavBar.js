@@ -1,11 +1,12 @@
 import React from "react";
 import { logout } from "../utils/authentication";
+import { Link } from "react-router-dom";
 
 const PrivateNavBar = () => (
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="/dashboard">
+  <nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm">
+    <Link to="/dashboard" class="navbar-brand serif">
       Travel Minutes
-    </a>
+    </Link>
     <button
       class="navbar-toggler"
       type="button"
@@ -19,18 +20,18 @@ const PrivateNavBar = () => (
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
       <div class="navbar-nav">
-        <a class="nav-item nav-link" href="/dashboard">
+        <Link to="/dashboard" class="nav-item nav-link">
           Dashboard
-        </a>
-        <a class="nav-item nav-link" href="/add-entry">
+        </Link>
+        <Link to="/add-entry" class="nav-item nav-link">
           Add Entry
-        </a>
-        <a class="nav-item nav-link" href="/about">
+        </Link>
+        <Link to="/about" class="nav-item nav-link">
           About
-        </a>
-        <a class="nav-item nav-link" href="/help">
+        </Link>
+        <Link to="/help" class="nav-item nav-link">
           Help
-        </a>
+        </Link>
         <p class="nav-item nav-link link cursor-pointer" onClick={logout}>
           Log Out
         </p>
