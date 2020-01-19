@@ -1,0 +1,20 @@
+.serif {
+  font-family: "Yeseva One", serif;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.tiny-button {
+  height: 1.6rem;
+  width: 1.6rem;
+}
+
+.mw-75 {
+  max-width: 75%;
+}
+
+.logo {
+  width: 100px;
+}
