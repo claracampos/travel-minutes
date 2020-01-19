@@ -10,4 +10,4 @@ const HelpPage = () => {
   );
 };
 
-export default ErrorPage;
+export default HelpPage;
