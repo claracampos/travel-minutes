@@ -2,6 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import App from "./App";
 import { firebase } from "./firebase/firebase";
+import "./styles/index.css";
 
 const renderApp = user => {
   ReactDOM.render(<App user={user} />, document.getElementById("root"));
