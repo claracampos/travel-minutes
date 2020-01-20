@@ -32,7 +32,7 @@ const PrivateNavBar = () => (
         <Link to="/help" class="nav-item nav-link">
           Help
         </Link>
-        <p class="nav-item nav-link link cursor-pointer" onClick={logout}>
+        <p class="nav-item nav-link cursor-pointer m-0" onClick={logout}>
           Log Out
         </p>
       </div>

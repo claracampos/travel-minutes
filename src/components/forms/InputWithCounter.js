@@ -2,9 +2,9 @@ import React from "react";
 import CharacterCounter from "./CharacterCounter";
 
 const InputWithCounter = props => (
-  <div>
-    <label>{props.label}: </label>
-    <input
+  <div class="form-group d-flex flex-column my-0">
+    <label class="my-0">{props.label}: </label>
+    <textarea
       type="text"
       name={props.name}
       defaultValue={props.defaultValue || ""}
@@ -12,7 +12,7 @@ const InputWithCounter = props => (
       autoComplete="off"
       required
       onChange={e => props.setCount(e.target.value.length)}
-    ></input>
+    ></textarea>
     <CharacterCounter count={props.count} />
   </div>
 );

@@ -5,6 +5,7 @@ import "react-datepicker/dist/react-datepicker.css";
 import AppContext from "../../context/AppContext";
 import InputWithCounter from "./InputWithCounter";
 import { addEntry } from "../../utils/entryUtils";
+import GoHomeButton from "../GoHomeButton";
 
 const AddEntryForm = () => {
   const { user } = useContext(AppContext);
@@ -15,19 +16,21 @@ const AddEntryForm = () => {
   const [date, setDate] = useState();
 
   return (
-    <div>
+    <div class="mt-4 font-italic text-center">
       <form
         onSubmit={e => {
           addEntry(e, user, date, () => history.push("/dashboard"));
         }}
       >
-        <div>
-          <label>Date: </label>
-          <DatePicker selected={date} onChange={setDate} required />
-        </div>
-        <div>
-          <label>Place: </label>
-          <input name="place" maxLength={50} required autoComplete="off" />
+        <div class="d-flex flex-row align-items-center flex-wrap mb-3 justify-content-center">
+          <div class="d-flex flex-column form-group my-0 mr-1">
+            <label class="my-0">Pick a date:</label>
+            <DatePicker selected={date} onChange={setDate} required />
+          </div>
+          <div class="d-flex flex-column form-group flex-grow-1 my-2">
+            <label class="my-0">Place: </label>
+            <input name="place" maxLength={50} required autoComplete="off" />
+          </div>
         </div>
         <div>
           <InputWithCounter
@@ -45,7 +48,7 @@ const AddEntryForm = () => {
             count={doneInputCount}
           />
         </div>
-        <div>
+        <div class="mb-3">
           <InputWithCounter
             name="met"
             label="People I met"
@@ -53,7 +56,13 @@ const AddEntryForm = () => {
             count={metInputCount}
           />
         </div>
-        <button>Add Entry</button>
+        <button
+          type="submit"
+          class="btn btn-primary rounded-pill shadow-sm mr-2"
+        >
+          Add Entry
+        </button>
+        <GoHomeButton>Cancel</GoHomeButton>
       </form>
     </div>
   );
