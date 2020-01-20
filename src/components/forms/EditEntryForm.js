@@ -2,7 +2,8 @@ import React, { useContext, useState } from "react";
 import { useHistory } from "react-router-dom";
 import AppContext from "../../context/AppContext";
 import InputWithCounter from "./InputWithCounter";
-import { editEntry } from "../../utils/entryUtils";
+import GoHomeButton from "../GoHomeButton";
+import { editEntry, deleteEntry } from "../../utils/entryUtils";
 
 const EditEntryForm = props => {
   const { user } = useContext(AppContext);
@@ -13,7 +14,7 @@ const EditEntryForm = props => {
   const [metInputCount, setMetInputCount] = useState(met.length);
 
   return (
-    <div>
+    <div class="font-italic">
       <form
         onSubmit={e => {
           editEntry(e, user, id, () => history.push("/dashboard"));
@@ -46,7 +47,27 @@ const EditEntryForm = props => {
             count={metInputCount}
           />
         </div>
-        <button>Save</button>
+        <div>
+          {" "}
+          <GoHomeButton>Cancel</GoHomeButton>
+          <button
+            type="submit"
+            class="btn btn-primary rounded-pill shadow-sm px-4 ml-2"
+          >
+            Save
+          </button>
+        </div>
+        <div>
+          <button
+            type="button"
+            onClick={() =>
+              deleteEntry(user, id, () => history.push("/dashboard"))
+            }
+            class="btn btn-link mt-2"
+          >
+            Delete Entry
+          </button>
+        </div>
       </form>
     </div>
   );

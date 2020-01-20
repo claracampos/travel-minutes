@@ -24,13 +24,13 @@ const JournalEntry = props => {
       </div>
       {fullEntry && (
         <div class="mb-2">
-          <p class="mb-1">
+          <p class="mb-1 text-wrap text-break">
             <b>What I saw:</b> {seen}
           </p>
-          <p class="mb-1">
+          <p class="mb-1 text-wrap text-break">
             <b>What I did:</b> {done}
           </p>
-          <p class="mb-3">
+          <p class="mb-3 text-wrap text-break">
             <b>People I met:</b> {met}
           </p>
           <Link to={`/edit-entry/${id}`}>Edit entry</Link>

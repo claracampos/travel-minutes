@@ -3,8 +3,8 @@ import { useParams, useHistory } from "react-router-dom";
 import { database } from "../firebase/firebase";
 import AppContext from "../context/AppContext";
 import EditEntryForm from "../components/forms/EditEntryForm";
-import GoHomeButton from "../components/GoHomeButton";
-import { deleteEntry } from "../utils/entryUtils";
+import PrivateNavBar from "../components/PrivateNavBar";
+import LoadingSpinner from "../components/LoadingSpinner";
 
 const EditEntryPage = () => {
   const { id } = useParams();
@@ -27,16 +27,15 @@ const EditEntryPage = () => {
 
   return (
     <div>
-      <h1>Edit Entry</h1>
-      {!entry && <h1>Loading...</h1>}
-      {entry && <h2>{`${entry.date} - ${entry.place}`}</h2>}
-      {entry && <EditEntryForm entry={entry} />}
-      <GoHomeButton>Cancel</GoHomeButton>
-      <button
-        onClick={() => deleteEntry(user, id, () => history.push("/dashboard"))}
-      >
-        Delete Entry
-      </button>
+      <PrivateNavBar />
+      <div class="m-3 text-center">
+        <h1 class="serif h5 mb-1">Edit Entry</h1>
+        {!entry && <LoadingSpinner />}
+        {entry && (
+          <h2 class="serif h3 text-wrap text-break mb-3">{`${entry.date} - ${entry.place}`}</h2>
+        )}
+        {entry && <EditEntryForm entry={entry} />}
+      </div>
     </div>
   );
 };
