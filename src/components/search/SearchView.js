@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import SearchResultsList from "./SearchResultsList";
 import { searchEntries } from "../../utils/entryUtils";
+import PrivateNavBar from "../PrivateNavBar";
 
 const SearchView = props => {
   const { journalEntries, setSearchView } = props;
@@ -8,31 +9,37 @@ const SearchView = props => {
 
   return (
     <div>
-      <h1>Dashboard</h1>
-      <h2>Search</h2>
-      <div>
-        <button
-          onClick={() => {
-            setSearchView(false);
-          }}
-        >
-          Go back
-        </button>
-      </div>
-      <div>
-        <label>Search: </label>
-        <input
-          onChange={e => {
-            searchEntries(e, journalEntries, setSearchResults);
-          }}
-        ></input>
-      </div>
-      <div>
-        {searchResults ? (
-          <SearchResultsList results={searchResults} />
-        ) : (
-          <p>Enter your search term above.</p>
-        )}
+      <PrivateNavBar />
+      <div className="m-3">
+        <h1 className="serif text-left">My Travel Log</h1>
+        <div>
+          <button
+            onClick={() => {
+              setSearchView(false);
+            }}
+            className="btn btn-sm btn-primary rounded-pill mb-2"
+          >
+            Go back
+          </button>
+        </div>
+        <div>
+          <div className="d-flex flex-row bg-light border rounded p-2">
+            <label className="lead mr-2">Search: </label>
+            <input
+              onChange={e => {
+                searchEntries(e, journalEntries, setSearchResults);
+              }}
+              className="form-control flex-grow-1"
+            ></input>
+          </div>
+          <div className="p-1">
+            {searchResults ? (
+              <SearchResultsList results={searchResults} />
+            ) : (
+              <p>Enter your search term above.</p>
+            )}
+          </div>
+        </div>
       </div>
     </div>
   );
