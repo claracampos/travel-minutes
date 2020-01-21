@@ -2,12 +2,12 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 const PublicNavBar = () => (
-  <nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm">
-    <Link to="/dashboard" class="navbar-brand serif">
+  <nav className="navbar navbar-expand-lg navbar-light bg-light shadow-sm">
+    <Link to="/dashboard" className="navbar-brand serif">
       Travel Minutes
     </Link>
     <button
-      class="navbar-toggler"
+      className="navbar-toggler"
       type="button"
       data-toggle="collapse"
       data-target="#navbarNav"
@@ -15,14 +15,14 @@ const PublicNavBar = () => (
       aria-expanded="false"
       aria-label="Toggle navigation"
     >
-      <span class="navbar-toggler-icon"></span>
+      <span className="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <div class="navbar-nav">
-        <Link to="/about" class="nav-item nav-link">
+    <div className="collapse navbar-collapse" id="navbarNav">
+      <div className="navbar-nav">
+        <Link to="/about" className="nav-item nav-link">
           About
         </Link>
-        <Link to="/help" class="nav-item nav-link">
+        <Link to="/help" className="nav-item nav-link">
           Help
         </Link>
       </div>

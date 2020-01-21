@@ -28,11 +28,11 @@ const EditEntryPage = () => {
   return (
     <div>
       <PrivateNavBar />
-      <div class="m-3 text-center">
-        <h1 class="serif h5 mb-1">Edit Entry</h1>
+      <div className="m-3 text-center">
+        <h1 className="serif h5 mb-1">Edit Entry</h1>
         {!entry && <LoadingSpinner />}
         {entry && (
-          <h2 class="serif h3 text-wrap text-break mb-3">{`${entry.date} - ${entry.place}`}</h2>
+          <h2 className="serif h3 text-wrap text-break mb-3">{`${entry.date} - ${entry.place}`}</h2>
         )}
         {entry && <EditEntryForm entry={entry} />}
       </div>

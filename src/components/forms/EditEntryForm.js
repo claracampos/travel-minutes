@@ -14,7 +14,7 @@ const EditEntryForm = props => {
   const [metInputCount, setMetInputCount] = useState(met.length);
 
   return (
-    <div class="font-italic">
+    <div className="font-italic">
       <form
         onSubmit={e => {
           editEntry(e, user, id, () => history.push("/dashboard"));
@@ -52,7 +52,7 @@ const EditEntryForm = props => {
           <GoHomeButton>Cancel</GoHomeButton>
           <button
             type="submit"
-            class="btn btn-primary rounded-pill shadow-sm px-4 ml-2"
+            className="btn btn-primary rounded-pill shadow-sm px-4 ml-2"
           >
             Save
           </button>
@@ -63,7 +63,7 @@ const EditEntryForm = props => {
             onClick={() =>
               deleteEntry(user, id, () => history.push("/dashboard"))
             }
-            class="btn btn-link mt-2"
+            className="btn btn-link mt-2"
           >
             Delete Entry
           </button>

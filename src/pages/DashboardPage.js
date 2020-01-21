@@ -43,15 +43,15 @@ const DashboardPage = () => {
   }
 
   return (
-    <div>
+    <div className="pb-3">
       <PrivateNavBar />
-      <div class="m-3">
-        <h1 class="serif text-left pb-3">My Travel Log</h1>
-        <div class="container-fluid d-flex flex-row justify-content-start px-0 mb-4">
+      <div className="m-3">
+        <h1 className="serif text-left pb-3">My Travel Log</h1>
+        <div className="container-fluid d-flex flex-row justify-content-start px-0 mb-4">
           <div>
             <Link
               to="/add-entry"
-              class="btn btn-primary border rounded-circle shadow-sm mr-2 add-button"
+              className="btn btn-primary border rounded-circle shadow-sm mr-2 add-button"
             >
               +
             </Link>
@@ -59,7 +59,7 @@ const DashboardPage = () => {
           <div>
             <button
               onClick={() => setSearchView(true)}
-              class="btn btn-light border border-secondary rounded-pill shadow-sm mr-2"
+              className="btn btn-light border border-secondary rounded-pill shadow-sm mr-2"
             >
               Search
             </button>
@@ -67,7 +67,7 @@ const DashboardPage = () => {
           <div>
             <select
               onChange={() => setSortByNewest(!sortByNewest)}
-              class="form-control bg-light border border-secondary rounded-pill shadow-sm"
+              className="form-control bg-light border border-secondary rounded-pill shadow-sm"
             >
               <option defaultValue="newest">View newest first</option>
               <option value="oldest">View oldest first</option>
@@ -78,11 +78,11 @@ const DashboardPage = () => {
           {!journalEntries && <LoadingSpinner />}
           {entriesOnPage && <JournalEntriesList entries={entriesOnPage} />}
         </div>
-        <div class="d-flex flex-row justify-content-center">
+        <div className="d-flex flex-row justify-content-center">
           {entriesOnPage && journalEntries.length - entriesOnPage.length !== 0 && (
             <button
               onClick={() => setPageLength(pageLength + 10)}
-              class="btn btn-lg btn-light border shadow-sm w-100 serif"
+              className="btn btn-lg btn-light border shadow-sm w-100 serif"
             >
               Load more
             </button>

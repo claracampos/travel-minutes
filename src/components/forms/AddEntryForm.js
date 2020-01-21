@@ -16,19 +16,19 @@ const AddEntryForm = () => {
   const [date, setDate] = useState();
 
   return (
-    <div class="mt-4 font-italic text-center">
+    <div className="mt-4 font-italic text-center">
       <form
         onSubmit={e => {
           addEntry(e, user, date, () => history.push("/dashboard"));
         }}
       >
-        <div class="d-flex flex-row align-items-center flex-wrap mb-3 justify-content-center">
-          <div class="d-flex flex-column form-group my-0 mr-1">
-            <label class="my-0">Pick a date:</label>
+        <div className="d-flex flex-row align-items-center flex-wrap mb-3 justify-content-center">
+          <div className="d-flex flex-column form-group my-0 mr-1">
+            <label className="my-0">Pick a date:</label>
             <DatePicker selected={date} onChange={setDate} required />
           </div>
-          <div class="d-flex flex-column form-group flex-grow-1 my-2">
-            <label class="my-0">Place: </label>
+          <div className="d-flex flex-column form-group flex-grow-1 my-2">
+            <label className="my-0">Place: </label>
             <input name="place" maxLength={50} required autoComplete="off" />
           </div>
         </div>
@@ -48,7 +48,7 @@ const AddEntryForm = () => {
             count={doneInputCount}
           />
         </div>
-        <div class="mb-3">
+        <div className="mb-3">
           <InputWithCounter
             name="met"
             label="People I met"
@@ -58,7 +58,7 @@ const AddEntryForm = () => {
         </div>
         <button
           type="submit"
-          class="btn btn-primary rounded-pill shadow-sm mr-2"
+          className="btn btn-primary rounded-pill shadow-sm mr-2"
         >
           Add Entry
         </button>

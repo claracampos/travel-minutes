@@ -6,7 +6,8 @@ const GoHomeButton = props => {
   return (
     <button
       onClick={() => history.push("/")}
-      class="btn btn-light border rounded-pill shadow-sm"
+      type="button"
+      className="btn btn-light border rounded-pill shadow-sm"
     >
       {props.children}
     </button>
