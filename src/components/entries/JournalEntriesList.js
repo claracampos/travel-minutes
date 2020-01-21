@@ -6,7 +6,6 @@ const JournalEntriesList = props => {
 
   return (
     <div>
-      <h2>Journal Entries:</h2>
       {entries &&
         entries.map(entry => <JournalEntry entry={entry} key={entry.id} />)}
     </div>
