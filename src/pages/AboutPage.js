@@ -8,49 +8,50 @@ import photo from "../media/photo.jpg";
 const AboutPage = () => {
   const { user } = useContext(AppContext);
   return (
-    <div>
-      {user ? <PrivateNavBar /> : <PublicNavBar />}
-      <div className="m-3">
-        <h1 className="serif text-left pb-3">About</h1>
-        <p className="text-center">
-          <i>Travel Minutes</i> was developed by:
-        </p>
-        <div className="d-flex flex-column align-items-center mb-1">
-          <img
-            className="rounded-circle photo"
-            src={photo}
-            alt="Clara Campos"
-          />
-          <p className="font-weight-bold text-secondary m-0">Clara Campos</p>
-
-          <p className="font-weight-light text-secondary m-0">
-            Prince Edward Island, Canada
+    <div className="d-flex justify-content-center bg-light">
+      <div className="main-container shadow-lg">
+        {user ? <PrivateNavBar /> : <PublicNavBar />}
+        <div className="py-3 px-5">
+          <h1 className="serif text-left pb-3">About</h1>
+          <p className="text-center">
+            <i>Travel Minutes</i> was developed by:
           </p>
-          <p>
-            <a
-              href="https://github.com/claracampos"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="mr-1"
-            >
-              GitHub
-            </a>
-            |
-            <a
-              href="https://claralearnstocode.wordpress.com/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="ml-1"
-            >
-              Blog
-            </a>
+          <div className="d-flex flex-column align-items-center mb-1">
+            <img
+              className="rounded-circle photo"
+              src={photo}
+              alt="Clara Campos"
+            />
+            <p className="font-weight-bold text-secondary m-0">Clara Campos</p>
+
+            <p className="font-weight-light text-secondary m-0">
+              Prince Edward Island, Canada
+            </p>
+            <p>
+              <a
+                href="https://github.com/claracampos"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mr-1"
+              >
+                GitHub
+              </a>
+              |
+              <a
+                href="https://claralearnstocode.wordpress.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="ml-1"
+              >
+                Blog
+              </a>
+            </p>
+          </div>
+          <p className="text-justify">
+            This web-application was built on React, designed with Bootstrap and
+            connected to Firebase for authentication and data storage.
           </p>
         </div>
-        <p className="text-justify">
-          This application was built on React and connected to Firebase for
-          authentication and data storage. It was tested using Jest and visually
-          designed with Bootstrap. You can browse the code here.
-        </p>
       </div>
     </div>
   );
