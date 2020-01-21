@@ -26,15 +26,17 @@ const EditEntryPage = () => {
   }, [id, user, history]);
 
   return (
-    <div>
-      <PrivateNavBar />
-      <div className="m-3 text-center">
-        <h1 className="serif h5 mb-1">Edit Entry</h1>
-        {!entry && <LoadingSpinner />}
-        {entry && (
-          <h2 className="serif h3 text-wrap text-break mb-3">{`${entry.date} - ${entry.place}`}</h2>
-        )}
-        {entry && <EditEntryForm entry={entry} />}
+    <div className="d-flex justify-content-center bg-light">
+      <div className="main-container shadow-lg">
+        <PrivateNavBar />
+        <div className="p-4">
+          <h1 className="serif h5 mb-1">Edit Entry</h1>
+          {!entry && <LoadingSpinner />}
+          {entry && (
+            <h2 className="serif h3 text-wrap text-break mb-3">{`${entry.date} - ${entry.place}`}</h2>
+          )}
+          {entry && <EditEntryForm entry={entry} />}
+        </div>
       </div>
     </div>
   );

@@ -7,14 +7,16 @@ import GoHomeButton from "../components/GoHomeButton";
 const ErrorPage = () => {
   const { user } = useContext(AppContext);
   return (
-    <div>
-      {user ? <PrivateNavBar /> : <PublicNavBar />}
-      <div className="m-3">
-        <h1 className="serif text-left pb-3">Error</h1>
-        <p className="lead mb-5">
-          The entry you're looking for is not available.
-        </p>
-        <GoHomeButton>Go Home</GoHomeButton>
+    <div className="d-flex justify-content-center bg-light">
+      <div className="main-container shadow-lg">
+        {user ? <PrivateNavBar /> : <PublicNavBar />}{" "}
+        <div className="p-4">
+          <h1 className="serif text-left pb-3">Error</h1>
+          <p className="lead mb-5">
+            The entry you're looking for is not available.
+          </p>
+          <GoHomeButton>Go Home</GoHomeButton>
+        </div>
       </div>
     </div>
   );

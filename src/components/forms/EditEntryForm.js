@@ -47,26 +47,27 @@ const EditEntryForm = props => {
             count={metInputCount}
           />
         </div>
-        <div>
-          {" "}
-          <GoHomeButton>Cancel</GoHomeButton>
-          <button
-            type="submit"
-            className="btn btn-primary rounded-pill shadow-sm px-4 ml-2"
-          >
-            Save
-          </button>
-        </div>
-        <div>
-          <button
-            type="button"
-            onClick={() =>
-              deleteEntry(user, id, () => history.push("/dashboard"))
-            }
-            className="btn btn-link mt-2"
-          >
-            Delete Entry
-          </button>
+        <div className="d-flex flex-column align-items-center w-100 mt-2">
+          <div>
+            <GoHomeButton>Cancel</GoHomeButton>
+            <button
+              type="submit"
+              className="btn btn-primary rounded-pill shadow-sm px-4 ml-2"
+            >
+              Save
+            </button>
+          </div>
+          <div>
+            <button
+              type="button"
+              onClick={() =>
+                deleteEntry(user, id, () => history.push("/dashboard"))
+              }
+              className="btn btn-link mt-2"
+            >
+              Delete Entry
+            </button>
+          </div>
         </div>
       </form>
     </div>
