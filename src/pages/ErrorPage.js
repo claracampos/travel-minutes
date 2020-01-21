@@ -1,12 +1,21 @@
-import React from "react";
+import React, { useContext } from "react";
+import AppContext from "../context/AppContext";
+import PrivateNavBar from "../components/PrivateNavBar";
+import PublicNavBar from "../components/PublicNavBar";
 import GoHomeButton from "../components/GoHomeButton";
 
 const ErrorPage = () => {
+  const { user } = useContext(AppContext);
   return (
     <div>
-      <h1>Error</h1>
-      <h2>The page you're looking for is not available.</h2>
-      <GoHomeButton>Go Home</GoHomeButton>
+      {user ? <PrivateNavBar /> : <PublicNavBar />}
+      <div className="m-3">
+        <h1 className="serif text-left pb-3">Error</h1>
+        <p className="lead mb-5">
+          The entry you're looking for is not available.
+        </p>
+        <GoHomeButton>Go Home</GoHomeButton>
+      </div>
     </div>
   );
 };
