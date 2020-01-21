@@ -11,7 +11,7 @@ const AboutPage = () => {
     <div className="d-flex justify-content-center bg-light">
       <div className="main-container shadow-lg">
         {user ? <PrivateNavBar /> : <PublicNavBar />}
-        <div className="py-3 px-5">
+        <div className="py-4 px-5">
           <h1 className="serif text-left pb-3">About</h1>
           <p className="text-center">
             <i>Travel Minutes</i> was developed by:
