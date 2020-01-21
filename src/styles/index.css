@@ -1,27 +1,10 @@
+html {
+  height: 100vh;
+  width: 100vw;
+}
+
 body {
-  background-color: white;
   font-size: 1rem;
-}
-
-.serif {
-  font-family: "Yeseva One", serif;
-}
-
-.cursor-pointer {
-  cursor: pointer;
-}
-
-.tiny-button {
-  height: 1.6rem;
-  width: 1.6rem;
-}
-
-.mw-75 {
-  max-width: 75%;
-}
-
-.logo {
-  width: 100px;
 }
 
 .add-button {
@@ -31,10 +14,39 @@ body {
   padding: 0 0.7rem 0.2rem 0.7rem;
 }
 
+.button-image {
+  width: 1.6rem;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.logo {
+  width: 100px;
+}
+
+.main-container {
+  width: 100vh;
+  min-height: 100vh;
+  background-color: white;
+}
+
 .photo {
   width: 100px;
 }
 
-.button-image {
+.serif {
+  font-family: "Yeseva One", serif;
+}
+
+.tiny-button {
+  height: 1.6rem;
   width: 1.6rem;
+}
+
+@media (min-width: 768px) {
+  .main-container {
+    width: 768px;
+  }
 }
