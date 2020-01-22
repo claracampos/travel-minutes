@@ -24,11 +24,11 @@ const AddEntryForm = () => {
       >
         <div className="d-flex flex-row align-items-center flex-wrap mb-3 justify-content-center">
           <div className="d-flex flex-column form-group my-0 mr-1">
-            <label className="my-0">Pick a date:</label>
+            <label className="my-0">Date:</label>
             <DatePicker selected={date} onChange={setDate} required />
           </div>
           <div className="d-flex flex-column form-group flex-grow-1 my-2">
-            <label className="my-0">Place: </label>
+            <label className="my-0">Place:</label>
             <input name="place" maxLength={50} required autoComplete="off" />
           </div>
         </div>
