@@ -40,7 +40,7 @@ const AboutPage = () => {
                 href="https://claralearnstocode.wordpress.com/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="ml-1"
+                className="ml-1 mr-1"
               >
                 Blog
               </a>
