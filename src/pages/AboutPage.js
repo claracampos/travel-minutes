@@ -44,6 +44,15 @@ const AboutPage = () => {
               >
                 Blog
               </a>
+              |
+              <a
+                href="https://claracampos.me/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="ml-1"
+              >
+                Website
+              </a>
             </p>
           </div>
           <p className="text-justify">
