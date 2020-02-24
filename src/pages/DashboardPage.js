@@ -5,7 +5,7 @@ import JournalEntriesList from "../components/entries/JournalEntriesList";
 import SearchView from "../components/search/SearchView";
 import PrivateNavBar from "../components/PrivateNavBar";
 import LoadingSpinner from "../components/LoadingSpinner";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 
 const DashboardPage = () => {
   const { user } = useContext(AppContext);
@@ -14,24 +14,28 @@ const DashboardPage = () => {
   const [pageLength, setPageLength] = useState(10);
   const [sortByNewest, setSortByNewest] = useState(true);
   const [searchView, setSearchView] = useState(false);
+  const history = useHistory();
 
   useEffect(() => {
     const fetchData = async () => {
-      const data = await database.ref(`users/${user}/entries`).once("value");
-      const entries = [];
+      try {
+        const data = await database.ref(`users/${user}/entries`).once("value");
+        const entries = [];
 
-      data.forEach(entry => {
-        entries.push({ id: entry.key, ...entry.val() });
-      });
-      if (sortByNewest) {
-        entries.reverse();
+        data.forEach(entry => {
+          entries.push({ id: entry.key, ...entry.val() });
+        });
+        if (sortByNewest) {
+          entries.reverse();
+        }
+        setJournalEntries(entries);
+        setEntriesOnPage(entries.slice(0, pageLength));
+      } catch (error) {
+        history.replace("/error");
       }
-      setJournalEntries(entries);
-      setEntriesOnPage(entries.slice(0, pageLength));
     };
-
     fetchData();
-  }, [user, sortByNewest, pageLength]);
+  }, [user, sortByNewest, pageLength, history]);
 
   if (searchView) {
     return (
