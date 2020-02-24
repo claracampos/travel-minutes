@@ -14,13 +14,17 @@ const EditEntryPage = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const data = await database
-        .ref(`users/${user}/entries/${id}`)
-        .once("value");
+      try {
+        const data = await database
+          .ref(`users/${user}/entries/${id}`)
+          .once("value");
 
-      data.exists()
-        ? setEntry({ id: id, ...data.val() })
-        : history.replace("/error");
+        data.exists()
+          ? setEntry({ id: id, ...data.val() })
+          : history.replace("/error");
+      } catch {
+        history.replace("/error");
+      }
     };
     fetchData();
   }, [id, user, history]);
