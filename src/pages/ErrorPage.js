@@ -12,9 +12,7 @@ const ErrorPage = () => {
         {user ? <PrivateNavBar /> : <PublicNavBar />}{" "}
         <div className="p-4">
           <h1 className="serif text-left pb-3">Error</h1>
-          <p className="lead mb-5">
-            The entry you're looking for is not available.
-          </p>
+          <p className="lead mb-5">Something went wrong.</p>
           <GoHomeButton>Go Home</GoHomeButton>
         </div>
       </div>
